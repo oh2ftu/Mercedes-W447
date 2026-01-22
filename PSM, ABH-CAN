@@ -1,0 +1,31 @@
+I bought a Waveshare 5" touchscreen with esp32. It has built-in CAN-transceiver.
+Some modifications were made:
+- The RS485 was sacrificed to get PWM control (direct esp32-pin) for the display. I just lifted the leg up for the driver, shuffled around some RS485 resistors and added a botch wire.
+- Touchscreen INT-pin had to get a suitable pullup-resistor.
+The code for the touchscreen will not be public at this time.
+The PSM ABH-CAN (bodybuilder-CAN) is somewhat documented in the Xentry documents, but the required CAN id's are not. They are listed here.
+- GPM1H, OUT from PSM. 18EF70EBh
+- GPM1I, OUT from PSM. 18EF71EBh
+- GPM1J, OUT from PSM. 18EF72EBh
+- GPM1K, OUT from PSM. 18EF73EBh
+- GPM2H, IN to PSM. 18EF70C9h
+- GPM2I, IN to PSM. 18EF71C9h
+- GPM2J, IN to PSM. 18EF72C9h
+- GPM2K, IN to PSM. 18EF73C9h
+There's also FMS and ISO data, I've not tried to decode them.
+
+Byte brakeup:
+- 0: four IN/OUT bits, 00=off, 01=on, 11=NLA
+- 1: four IN/OUT bits, 00=off, 01=on, 11=NLA
+- 2: 16-bit byte
+- 3: 16-bit byte
+- 4 and 5: 32-bit word
+- 6 and 7: 32-bit word
+
+Just for reference. Setting the io-bits 
+- (1000) 01 00 00 00 results in 0x01
+- (0100) 00 01 00 00 results in 0x04
+- (0010) 00 00 01 00 results in 0x10
+- (0001) 00 00 00 01 results in 0x40
+Make of this what you will, I'm not that good at binary calculations. Something about this being LSB.
+Also, what's in 32-bit word gets combined in reverse order (LSB?). So a speed that's in bytes 4 and five would combine like this: uint16_t raw_val = (x[5] << 8) | x[4];
