@@ -1,0 +1,37 @@
+This documents the battery sensor data.
+It's located at the battery and transmits to the SAM via LIN-bus.
+I tapped into it at the SAM-unit. The connector is NOT MQS, but very similar. Have not ID'd it, just made a splice.
+The pid for the sensor is 0x97.
+Here's the code that Gemini worked out for me into esphome - of all things.
+The internal resistance is not sure if it's correct. It reports some other data too, perhaps SOC but that's not verifiable via Xentry.
+
+            auto it = std::find(bytes.begin(), bytes.end(), 0x55);
+            if (it == bytes.end() || std::distance(it, bytes.end()) < 8) return;
+            
+            std::vector<uint8_t> frame(it + 1, bytes.end());
+            uint8_t pid = frame[0];
+
+            if (pid == 0x97 && frame.size() >= 7) {
+              // RAW HEX LOGGING - Forced to Warning level to ensure visibility
+              //ESP_LOGW("IBS_DEBUG", "Raw Current Bytes: D0=%02X D1=%02X D2=%02X", frame[1], frame[2], frame[3]);
+
+              // Current Calculation
+              uint32_t curr_raw = ((uint32_t)frame[3] << 16) | ((uint32_t)frame[2] << 8) | frame[1];
+              
+              // Calculate Amps
+              float amps = ((float)curr_raw - 2000000.0f) / 1000.0f;
+
+              id(linbatcurrent).publish_state(amps);
+
+              // Voltage and Temp (Confirmed Working)
+              uint16_t volt_raw = ((uint16_t)frame[5] << 8) | frame[4];
+              id(linbatvolt).publish_state((float)volt_raw / 1000.0f);
+              id(linbattemp).publish_state(((float)frame[6] - 80.0f) * 0.5f);
+              // 8-bit Internal Resistance: Byte 7 (D6)
+              // Resolution is typically 0.1 mOhm per step. 
+              // 0x1E = 30 decimal -> 3.0 mOhm
+              float resistance = (float)frame[7] * 0.01f;
+              id(linbatresistance).publish_state(resistance);
+              // Optional: Log the Raw vs Calculated for comparison
+              //ESP_LOGW("IBS_MATH", "Raw: %u | Calculated: %.2fA", curr_raw, amps);
+            }
