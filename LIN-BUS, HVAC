@@ -1,0 +1,12 @@
+This is shortly for the LIN-bus that connects:
+- N154 HVAC Control unit (N154)
+- S98/1, front AC control panel
+- S98/2, rear AC control panel
+- A49/5, Remote control control unit (Code HY1)
+- N33/3, warm water stationary heater
+
+I did connect my LIN-sniffer (See other repo) via the front AC control panel using an 3-pin MQS-adapter from aliexpress. Look for "TE/AMP 2-929169-1 A 3 Pin"
+
+So far I've just started, here are the PID's that are found:
+0x0D 0x20 0x3F 0x49 0x4C 0x5E 0x76 0x78 0x8B 0x8E 0xCF 0xDD
+Mapping will start someday.
