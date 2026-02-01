@@ -22,7 +22,14 @@ Mapping will start someday.
 - 0x5E: Unknown
 - 0x76: Unkown
 - 0x78: Unknown
-- 0x8B: Some leds
+- 0x8B: Some leds. byte 5:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 7: Auto Off (1) / Auto On (0)
+        // Bit 5: Rear Window Heater
+        // Bit 4: Always 1 (Base state)
+        // Bit 2: Aux Heat Timer
+        // Bit 1: Aux Heat Ventilation
+        // Bit 0: Aux Heat On 
 - 0x8E: Some buttons
 - 0xCF: Rear display
 - 0xDD: Unknown
