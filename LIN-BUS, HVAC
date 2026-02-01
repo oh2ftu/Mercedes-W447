@@ -12,7 +12,11 @@ So far I've just started, here are the PID's that are found:
 And a new:
 0x0D 0x20 0x3F 0x49 0x4C 0x50 0x5E 0x76 0x78 0x8B 0x8E 0xCF 0xDD
 Mapping will start someday.
-
+The up/down-buttons work in a funny way.
+They have three states, heres one example, this varies from button to button:
+- button up:         00001101
+- Button middle:     00001011
+- button down:       00001001
 - 0x0D: Could be buttons or a master feedback
         byte 0:
         // Standard bit order: 7 6 5 4 3 2 1 0
