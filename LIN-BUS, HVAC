@@ -14,15 +14,70 @@ And a new:
 Mapping will start someday.
 
 - 0x0D: Could be buttons or a master feedback
+        byte 0:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 7: btn, rear temperature (up/down)
+        // Bit 6: btn, rear temperature (up/down)
+        // Bit 5: btn, rear temperature (up/down)
+        // Bit 4: btn, rear temperature (up/down)
+        byte 3:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 7: btn, rear fan (up/down)
+        // Bit 6: btn, rear fan (up/down)
+        // Bit 5: btn, rear fan (up/down)
+        // Bit 4: btn, rear fan (up/down)
 - 0x20: Unknown
 - 0x3F: Unknown
 - 0x49: Unknown
+        byte 0:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 3: btn, Aux heater
 - 0x4C: Here be some buttons. Maybe
+        byte 0:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 5: btn, menu
+        // Bit 0: btn, auto
+        byte 1:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 7: btn, right direction (up/down)
+        // Bit 6: btn, right direction (up/down)
+        // Bit 5: btn, right direction (up/down)
+        // Bit 4: btn, right direction (up/down)
+        byte 2:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 3: btn, fan (up/down)
+        // Bit 2: btn, fan (up/down)
+        // Bit 1: btn, fan (up/down
+        // Bit 0: btn, fan (up/down)
+        byte 3:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 3: btn, left temp (up/down)
+        // Bit 2: btn, left temp (up/down)
+        // Bit 1: btn, left temp (up/down
+        // Bit 0: btn, left temp (up/down)
+        byte 4:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 3: btn, right temp (up/down)
+        // Bit 2: btn, right temp (up/down)
+        // Bit 1: btn, right temp (up/down
+        // Bit 0: btn, right temp (up/down)
+        byte 5:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 7: btn, left direction (up/down)
+        // Bit 6: btn, left direction (up/down)
+        // Bit 5: btn, left direction (up/down)
+        // Bit 4: btn, left direction (up/down)
 - 0x50: Unknown
 - 0x5E: Unknown
 - 0x76: Unkown
 - 0x78: Unknown
-- 0x8B: Some leds. byte 5:
+- 0x8B: Some leds. 
+        byte 0:
+        // Standard bit order: 7 6 5 4 3 2 1 0
+        // Bit 5: LED, rest
+        // Bit 4: LED, interior circulation on
+        byte 1: follows fan speed?
+        byte 5:
         // Standard bit order: 7 6 5 4 3 2 1 0
         // Bit 7: Auto Off (1) / Auto On (0)
         // Bit 5: Rear Window Heater
