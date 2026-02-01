@@ -15,6 +15,8 @@ The PSM ABH-CAN (bodybuilder-CAN) is somewhat documented in the Xentry documents
 There's also FMS and ISO data, I've not tried to decode them.
 FMS-data:
 18FEEE01 first byte, engine temperature. Offset -40
+18FEE001 bytes 0-3. 1km/bit
+18FEC101 bytes 0-3. distance since dash reset. 5m/bit.
 Byte brakeup:
 - 0: four IN/OUT bits, 00=off, 01=on, 11=NLA
 - 1: four IN/OUT bits, 00=off, 01=on, 11=NLA
