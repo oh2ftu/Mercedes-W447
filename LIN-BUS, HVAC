@@ -86,7 +86,7 @@ They have three states, heres one example, this varies from button to button:
                 0x07 full load
         // Byte 2, fuel pump? (0-9Hz) OR Y141 OR heat output
 - 0xDD: Aux heater?
-        // Byte 2, flame sensor? OR Load target/state
+        // Byte 2, flame sensor? OR Load target/state OR blower
         // Byte 3, combustion air blower speed
 - 0x8B: Some leds. 
         byte 0:
