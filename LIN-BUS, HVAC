@@ -74,17 +74,20 @@ They have three states, heres one example, this varies from button to button:
 - 0x50: Unknown
 - 0x5E: Unknown
 - 0x76: Aux heater?
-        // Byte 2, heat output. Xentry no 573
+        // Byte 0, start request, follows LED
+        // Byte 2, 
         // Byte 2, Y141??
-        // Byte 3, flame sensor temp? offset -141? maybe not
-
+        // Byte 3, flame sensor temp? offset -141? maybe not -> reacts to car start, but not stop
+        // byte 4, stays FF
+        // byte 5-7, stays 
 - 0x78: aux heater?
         // Byte 0, Coolant temp. offset -40
         // Byte 1, operating condition
                 0x00 off
                 0x04 Half load
                 0x07 full load
-        // Byte 2, fuel pump? (0-9Hz) OR Y141 OR heat output
+        // Byte 2, fuel pump? (0-9Hz) OR Y141 OR heat output OR blower
+
 - 0xDD: Aux heater?
         // Byte 2, flame sensor? OR Load target/state OR blower
         // Byte 3, combustion air blower speed
