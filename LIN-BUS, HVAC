@@ -75,7 +75,7 @@ They have three states, heres one example, this varies from button to button:
 - 0x5E: Unknown
 - 0x76: Aux heater?
         // Byte 0, start request, follows LED
-        // Byte 2, 
+        // byte 1, can be blower? .> not really. Fluctuates while device off.
         // Byte 2, Y141??
         // Byte 3, flame sensor temp? offset -141? maybe not -> reacts to car start, but not stop
         // byte 4, stays FF
@@ -96,7 +96,7 @@ They have three states, heres one example, this varies from button to button:
         // byte 0, stary high, but not FF
         // byte 1, follows voltage OR engine start -> not engine start. Coolant temp does not increase at change, but reacts to voltage.
         // Byte 2, flame sensor? OR Load target/state OR blower - FOLLOWS byte 1 -> byte 1 and 2 voltage? neither follows voltage fluctuation. -> not engine start. Coolant temp does not increase at change, but reacts to voltage.
-        // Byte 3, combustion air blower speed -> NOT. Follows door unlock and from there also voltage spikes. 2-byte voltage with byte2? -> not engine start. Coolant temp does not increase at change, but reacts to voltage.
+        // Byte 3, combustion air blower speed -> NOT. Follows door unlock and from there also voltage spikes. 2-byte voltage with byte2? -> not engine start. Coolant temp does not increase at change, but reacts to voltage. -> not door lock
         // byte 4, also follows door unlock and voltage drops -> not engine start, not door lock. Coolant temp does not increase at change, but reacts to voltage.
         // byte 5, also follows door unlock and voltage drops -> not engine start, not door lock. Coolant temp does not increase at change, but reacts to voltage.
         // byte 6-7 stays mostly FF
