@@ -86,11 +86,20 @@ They have three states, heres one example, this varies from button to button:
                 0x00 off
                 0x04 Half load
                 0x07 full load
-        // Byte 2, fuel pump? (0-9Hz) OR Y141 OR heat output OR blower
+        // Byte 2, fuel pump? (0-9Hz) OR Y141 OR heat output *OR blower*
+        // byte 3, follows start request
+        // byte 4, follows start request
+        // byte 5-6 stays FF
+        // byte 7 follows start request
 
 - 0xDD: Aux heater?
-        // Byte 2, flame sensor? OR Load target/state OR blower
-        // Byte 3, combustion air blower speed
+        // byte 0, stary high, but not FF
+        // byte 1, follows voltage OR engine start
+        // Byte 2, flame sensor? OR Load target/state OR blower - FOLLOWS byte 1 -> byte 1 and 2 voltage? neither follows voltage fluctuation.
+        // Byte 3, combustion air blower speed -> NOT. Follows door unlock and from there also voltage spikes. 2-byte voltage with byte2?
+        // byte 4, also follows door unlock and voltage drops
+        // byte 5, also follows door unlock and voltage drops
+        // byte 6-7 stays mostly FF
 - 0x8B: Some leds. 
         byte 0:
         // Standard bit order: 7 6 5 4 3 2 1 0
