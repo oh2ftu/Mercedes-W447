@@ -74,10 +74,10 @@ They have three states, heres one example, this varies from button to button:
 - 0x50: Unknown
 - 0x5E: Unknown
 - 0x76: Aux heater?
-        // Byte 0, start request, follows LED
-        // byte 1, can be blower? .> not really. Fluctuates while device off.
-        // Byte 2, Y141??
-        // Byte 3, flame sensor temp? offset -141? maybe not -> reacts to car start, but not stop
+        // Byte 0, start request, follows LED (device on, not really request)
+        // byte 1, can be blower? .> not really. Fluctuates while device off. -> More certain that it is blower
+        // Byte 2, Y141?? -> most probable
+        // Byte 3, flame sensor temp? offset -141? maybe not -> reacts to car start, but not stop -> or is temp sensor?
         // byte 4, stays FF
         // byte 5-7, stays 
 - 0x78: aux heater?
@@ -87,10 +87,11 @@ They have three states, heres one example, this varies from button to button:
                 0x04 Half load
                 0x07 full load
         // Byte 2, fuel pump? (0-9Hz) OR Y141 OR heat output *OR blower*
-        // byte 3, follows start request
+        // byte 3, follows start request 
         // byte 4, follows start request
         // byte 5-6 stays FF
         // byte 7 follows start request
+        // byte 3, 4, 7 follow 0x76 byte 0 quite well
 
 - 0xDD: Aux heater?
         // byte 0, stary high, but not FF
