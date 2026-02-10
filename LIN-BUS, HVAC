@@ -31,7 +31,7 @@ They have three states, heres one example, this varies from button to button:
         // Bit 5: btn, rear fan (up/down)
         // Bit 4: btn, rear fan (up/down)
 - 0x20: Unknown
-- 0x3F: Unknown
+- 0x3F: Unknown -> NOT in use?
 - 0x49: Unknown
         byte 0:
         // Standard bit order: 7 6 5 4 3 2 1 0
