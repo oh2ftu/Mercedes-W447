@@ -37,7 +37,12 @@ They have three states, heres one example, this varies from button to button:
 - 0x49: Unknown
         byte 0:
         // Standard bit order: 7 6 5 4 3 2 1 0
+        // bit 6: BTN Menu
+        // Bit 5, 4?
         // Bit 3: btn, Aux heater
+        // Bit 2: btn, rear window heater
+        // Bit 1: btn, Activate front demister
+        // Bit 0: btn, Interior circulation
 - 0x4C: Here be some buttons. Maybe
         byte 0:
         // Standard bit order: 7 6 5 4 3 2 1 0
@@ -112,10 +117,13 @@ They have three states, heres one example, this varies from button to button:
         // Standard bit order: 7 6 5 4 3 2 1 0
         // Bit 5: LED, rest
         // Bit 4: LED, interior circulation on
+        // Bit 3: ?
+        // Bit 2: Auto?
+        // Bit 0: Auto?
         byte 1: follows fan speed?
         byte 5:
         // Standard bit order: 7 6 5 4 3 2 1 0
-        // Bit 7: Auto Off (1) / Auto On (0)
+        // Bit 7: 
         // Bit 5: Rear Window Heater
         // Bit 4: Always 1 (Base state)
         // Bit 2: Aux Heat Timer
