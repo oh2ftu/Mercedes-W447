@@ -73,6 +73,10 @@ They have three states, heres one example, this varies from button to button:
         // Bit 4: btn, left direction (up/down)
 - 0x50: Unknown
 - 0x5E: Unknown
+        Byte 5: Operating mode/status
+        - 0A, starting
+        - 4A, timer countdown
+        Byte 6: Remaining time in minutes
 - 0x76: Aux heater?
         // Byte 0, start request, follows LED (device on, not really request)
         // byte 1, can be blower? .> not really. Fluctuates while device off. -> More certain that it is blower
