@@ -33,8 +33,7 @@ They have three states, heres one example, this varies from button to button:
         // Bit 5: btn, rear fan (up/down)
         // Bit 4: btn, rear fan (up/down)
 - 0x20: Unknown
-- 0x3F: Unknown -> NOT in use?
-- 0x49: Unknown
+- 0x49: Buttons
         byte 0:
         // Standard bit order: 7 6 5 4 3 2 1 0
         // bit 6: BTN Menu
@@ -54,7 +53,7 @@ They have three states, heres one example, this varies from button to button:
         // Bit 6: btn, right direction (up/down)
         // Bit 5: btn, right direction (up/down)
         // Bit 4: btn, right direction (up/down)
-        byte 2:
+        byte 2: FAN Power level
         // Standard bit order: 7 6 5 4 3 2 1 0
         // Bit 3: btn, fan (up/down)
         // Bit 2: btn, fan (up/down)
@@ -79,19 +78,19 @@ They have three states, heres one example, this varies from button to button:
         // Bit 5: btn, left direction (up/down)
         // Bit 4: btn, left direction (up/down)
 - 0x50: Unknown
-- 0x5E: Unknown
+- 0x5E: Aux heater timer
         // Byte 5: Operating mode/status
         - 0A, starting
         - 4A, timer countdown
         // Byte 6: Remaining time in minutes, 3F at idle
-- 0x76: Aux heater?
+- 0x76: Aux heater status
         // Byte 0, start request, follows LED (device on, not really request)
         // byte 1, can be blower? .> not really. Fluctuates while device off. -> More certain that it is blower
         // Byte 2, Y141?? -> most probable
         // Byte 3, flame sensor temp? offset -141? maybe not -> reacts to car start, but not stop -> or is temp sensor?
         // byte 4, stays FF
         // byte 5-7, stays 
-- 0x78: aux heater?
+- 0x78: aux heater
         // Byte 0, Coolant temp. offset -40
         // Byte 1, operating condition
                 0x00 off
@@ -104,7 +103,7 @@ They have three states, heres one example, this varies from button to button:
         // byte 7 follows start request
         // byte 3, 4, 7 follow 0x76 byte 0 quite well
 
-- 0xDD: Aux heater?
+- 0xDD: Aux heater
         // byte 0, stary high, but not FF
         // byte 1, follows voltage OR engine start -> not engine start. Coolant temp does not increase at change, but reacts to voltage.
         // Byte 2, flame sensor? OR Load target/state OR blower - FOLLOWS byte 1 -> byte 1 and 2 voltage? neither follows voltage fluctuation. -> not engine start. Coolant temp does not increase at change, but reacts to voltage.
@@ -131,4 +130,3 @@ They have three states, heres one example, this varies from button to button:
         // Bit 0: Aux Heat On 
 - 0x8E: Some buttons
 - 0xCF: Rear display
-- 0xDD: Unknown
