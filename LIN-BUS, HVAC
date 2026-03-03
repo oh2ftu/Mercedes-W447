@@ -32,7 +32,7 @@ They have three states, heres one example, this varies from button to button:
         // Bit 6: btn, rear fan (up/down)
         // Bit 5: btn, rear fan (up/down)
         // Bit 4: btn, rear fan (up/down)
-- 0x20: Unknown
+- 0x20: Remote?
 - 0x49: Buttons
         byte 0:
         // Standard bit order: 7 6 5 4 3 2 1 0
